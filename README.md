@@ -2,7 +2,7 @@
 
 ## Описание
 
-Данный проект представляет собой API для социальной сети Yatube, позволяющее пользователям взаимодействовать с контентом (публикациями, комментариями) и управлять подписками на других пользователей. Проект реализует RESTful API с использованием Django REST Framework и JWT-аутентификации.
+Этот проект представляет собой API для социальной сети Yatube. Он предоставляет пользователям возможность работать с контентом — просматривать, создавать и редактировать публикации и комментарии, а также управлять подписками на других авторов. API построен по принципам REST и реализован с использованием Django REST Framework и аутентификации на основе JWT.
 
 ## Установка
 
@@ -22,7 +22,7 @@
    # Для Windows:
    venv\Scripts\activate
    # Для Linux/macOS:
-   # source venv/bin/activate
+   source venv/bin/activate
    ```
 
 3. Установите зависимости:
@@ -58,6 +58,12 @@
 
 Проект будет доступен по адресу `http://127.0.0.1:8000/`.
 
+## Документация к API
+Подробная документация к API будет доступна после запуска проекта по адресу:
+```
+http://127.0.0.1:8000/redoc/
+```
+
 ## Примеры запросов к API
 
 ### Получение JWT-токена
@@ -79,8 +85,8 @@
 
 ```json
 {
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+  "refresh": "refresh_token",
+  "access": "access_token"
 }
 ```
 
@@ -94,7 +100,7 @@
 
 ```json
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+    "refresh": "refresh_token"
 }
 ```
 
@@ -106,16 +112,10 @@
 
 ```json
 [
-    {
-        "id": 1,
-        "user": "current_user",
-        "following": "followed_user_1"
-    },
-    {
-        "id": 2,
-        "user": "current_user",
-        "following": "followed_user_2"
-    }
+  {
+    "user": "current_user",
+    "following": "followed_user"
+  }
 ]
 ```
 
@@ -135,7 +135,6 @@
 
 ```json
 {
-    "id": 3,
     "user": "current_user",
     "following": "username_to_follow"
 }
